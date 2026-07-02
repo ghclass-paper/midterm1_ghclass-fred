@@ -17,22 +17,22 @@ Due: 2025-10-08
 
 ## Data
 
-Placeholder description of the exam data: `data/placeholder.csv` is a small synthetic data set with an id, a group, and a measured value for each observation. In a real exam this section would describe where the data come from and what each variable means.
+`data/placeholder.csv` is a small synthetic data set with an id, a group, and a measured value for each observation.
 
 ## Task 1 - Tidy the data
 
-Placeholder description of the first task: read in the provided data and tidy it into the form needed for the later tasks.
+Read in the provided data and tidy it into the form needed for the later tasks.
 
 ## Task 2 - Summarize by group
 
-Placeholder description of the second task: compute a small set of summaries of the measured value within each group.
+Compute a small set of summaries of the measured value within each group.
 
 ## Task 3 - Visualize the results
 
-Placeholder description of the third task: construct a figure showing the measured value by group, and briefly describe what it shows.
+Construct a figure showing the measured value by group, and briefly describe what it shows.
 
 ## Submission and Marking
 
 Your write ups and rendered results must appear in the final rendered html document. Commit and push your work to this repository before the due date.
 
-On each push the Check Assignment workflow verifies that only the expected files are present and that `midterm1.qmd` renders cleanly. A passing check is required for your submission to be considered complete, but it does not pass any judgement on the correctness of your work.
+On each push the Check Assignment workflow verifies that only the expected files are present and that `midterm1.qmd` renders cleanly. A passing check is required for your submission to be considered complete, but it says nothing about the correctness of your solutions.
