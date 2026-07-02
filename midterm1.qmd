@@ -1,0 +1,63 @@
+---
+title: "Midterm 1"
+subtitle: "Due 2025-10-08 by 5:00 pm."
+author: Your name here
+format:
+  html:
+    self-contained: true
+---
+
+Before you start be sure to read through *all* of the rules and instructions in the `README.md`.
+
+<br/>
+
+### Data & Setup
+
+```{r setup}
+#| message: false
+d = readr::read_csv("data/placeholder.csv")
+```
+
+-----
+
+### Task 1 - Tidy the data
+
+#### Write up
+
+
+
+#### Code
+
+```{r task1}
+
+```
+
+-----
+
+### Task 2 - Summarize by group
+
+#### Write up
+
+
+
+#### Code
+
+```{r task2}
+
+```
+
+-----
+
+### Task 3 - Visualize the results
+
+#### Write up
+
+
+
+#### Code
+
+```{r task3}
+
+```
+
+-----
