@@ -1,4 +1,12 @@
-on: push
+on:
+  push:
+  # The schedule and manual trigger below are not part of the normal course
+  # workflow; they are included only so this demo's uploaded artifacts do not
+  # expire, since GitHub deletes artifacts 90 days after each run and public
+  # repositories cannot raise that limit
+  schedule:
+    - cron: '0 12 1 */2 *'
+  workflow_dispatch:
 name: Check Assignment
 jobs:
   check-allowed-files:
