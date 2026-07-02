@@ -1,12 +1,4 @@
-on:
-  push:
-  # The schedule and manual trigger below are not part of the normal course
-  # workflow; they are included only so this demo's uploaded artifacts do not
-  # expire, since GitHub deletes artifacts 90 days after each run and public
-  # repositories cannot raise that limit
-  schedule:
-    - cron: '0 12 1 */2 *'
-  workflow_dispatch:
+on: push
 name: Check Assignment
 jobs:
   check-allowed-files:
@@ -33,8 +25,3 @@ jobs:
       run: |
         checklist::check_qmd_renders("midterm1.qmd", install_missing = TRUE)
       shell: Rscript {0}
-    - name: Create artifacts
-      uses: actions/upload-artifact@v7
-      with:
-        name: midterm1-html
-        path: midterm1.html
