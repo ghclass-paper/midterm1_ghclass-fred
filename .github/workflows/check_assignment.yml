@@ -1,5 +1,14 @@
-on: push
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
 name: Check Assignment
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: assignment-artifacts-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   check-allowed-files:
     runs-on: ubuntu-latest
@@ -15,13 +24,42 @@ jobs:
         })
       shell: Rscript {0}
   check-renders:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/dukestatsci/r_gh_actions:latest
     steps:
+    - name: Delete old grading artifacts
+      uses: actions/github-script@v8
+      with:
+        script: |
+          const repository = {
+            owner: context.repo.owner,
+            repo: context.repo.repo
+          };
+          const artifacts = await github.paginate(
+            github.rest.actions.listArtifactsForRepo,
+            { ...repository, per_page: 100 }
+          );
+          for (const artifact of artifacts.filter(a => a.name === "midterm1-html")) {
+            try {
+              await github.rest.actions.deleteArtifact({
+                ...repository,
+                artifact_id: artifact.id
+              });
+            } catch (error) {
+              if (error.status !== 404) throw error;
+            }
+          }
     - name: Checkout
       uses: actions/checkout@v7
     - name: Check Renders
       run: |
         checklist::check_qmd_renders("midterm1.qmd", install_missing = TRUE)
       shell: Rscript {0}
+    - name: Upload rendered assignment
+      uses: actions/upload-artifact@v4
+      with:
+        name: midterm1-html
+        path: midterm1.html
+        if-no-files-found: error
