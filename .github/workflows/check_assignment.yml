@@ -58,7 +58,7 @@ jobs:
         checklist::check_qmd_renders("midterm1.qmd", install_missing = TRUE)
       shell: Rscript {0}
     - name: Upload rendered assignment
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: midterm1-html
         path: midterm1.html
